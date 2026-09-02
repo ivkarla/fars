@@ -1,0 +1,24 @@
+Package: fars
+Type: Package
+Title: Functions to Read, Summarize, and Map US FARS Accident Data
+Version: 0.1.0
+Authors@R: person("Your", "Name", email = "you@example.com", role = c("aut", "cre"))
+Description: Provides a small set of functions for reading Fatality Analysis
+    Reporting System (FARS) data files, summarizing accident counts by month
+    and year, and plotting accident locations on a state map.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    readr,
+    dplyr,
+    tidyr,
+    maps,
+    graphics,
+    magrittr
+Suggests:
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Config/roxygen2/version: 8.1.0

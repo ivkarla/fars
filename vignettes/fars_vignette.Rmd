@@ -1,0 +1,91 @@
+---
+title: "Introduction to the fars Package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to the fars Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = FALSE
+)
+```
+
+## Overview
+
+The `fars` package provides a small set of functions for working with data
+from the US National Highway Traffic Safety Administration's Fatality
+Analysis Reporting System (FARS). FARS is a nationwide census providing
+yearly data on fatal injuries suffered in motor vehicle crashes.
+
+The package includes functions to:
+
+- read a single year's FARS data file (`fars_read`)
+- build the standard FARS filename for a given year (`make_filename`)
+- read and combine multiple years of FARS data (`fars_read_years`)
+- summarize accident counts by month and year (`fars_summarize_years`)
+- plot accident locations for a given state and year on a map
+  (`fars_map_state`)
+
+## Reading a single year of data
+
+`fars_read()` reads a single FARS CSV (optionally `.bz2`-compressed) file
+into a tibble. It expects the file to already exist locally.
+
+```{r}
+library(fars)
+data_2013 <- fars_read("accident_2013.csv.bz2")
+head(data_2013)
+```
+
+## Building filenames
+
+`make_filename()` constructs the expected FARS filename for a given year,
+following the `"accident_<year>.csv.bz2"` naming convention.
+
+```{r}
+make_filename(2013)
+#> [1] "accident_2013.csv.bz2"
+```
+
+## Reading multiple years
+
+`fars_read_years()` reads several years of data at once, returning a list
+of tibbles (one per year) containing just the `MONTH` and `year` columns.
+Years that fail to load produce a warning and a `NULL` entry rather than
+stopping execution.
+
+```{r}
+fars_read_years(c(2013, 2014, 2015))
+```
+
+## Summarizing accidents by month and year
+
+`fars_summarize_years()` builds on `fars_read_years()` to produce a wide
+summary table with one row per month and one column per year, showing the
+number of accidents recorded.
+
+```{r}
+fars_summarize_years(c(2013, 2014, 2015))
+```
+
+## Mapping accidents for a state
+
+`fars_map_state()` reads a single year of data, filters to a given state
+(using the FARS numeric state code), and plots the location of each
+accident on a map of that state.
+
+```{r}
+# Plot accidents in California (state code 6) for 2013
+fars_map_state(6, 2013)
+```
+
+## Session info
+
+```{r, eval = TRUE}
+sessionInfo()
+```
