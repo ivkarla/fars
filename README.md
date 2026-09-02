@@ -1,7 +1,7 @@
 # fars
 
 <!-- badges: start -->
-[![Build Status](https://travis-ci.org/YOUR_GITHUB_USERNAME/fars.svg?branch=master)](https://travis-ci.org/YOUR_GITHUB_USERNAME/fars)
+[![Build Status](https://travis-ci.org/ivkarla/fars.svg?branch=master)](https://travis-ci.org/ivkarla/fars)
 <!-- badges: end -->
 
 ## Overview
