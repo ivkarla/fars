@@ -1,8 +1,7 @@
 # fars
 
 <!-- badges: start -->
-[![Build Status](https://travis-ci.org/ivkarla/fars.svg?branch=master)](https://travis-ci.org/ivkarla/fars)
-<!-- badges: end -->
+[![R-CMD-check](https://github.com/ivkarla/fars/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ivkarla/fars/actions/workflows/R-CMD-check.yaml)<!-- badges: end -->
 
 ## Overview
 
